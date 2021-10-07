@@ -1,0 +1,46 @@
+diff --git a/node_modules/react-native-multiple-select/index.d.ts b/node_modules/react-native-multiple-select/index.d.ts
+index 0c053d8..51415a9 100644
+--- a/node_modules/react-native-multiple-select/index.d.ts
++++ b/node_modules/react-native-multiple-select/index.d.ts
+@@ -44,6 +44,7 @@ export interface MultiSelectProps {
+     hideTags?: boolean,
+     canAddItems?: boolean;
+     onAddItem?: (newItems: any[]) => void;
++    onSubmit?: () => void;
+     onChangeInput?: (text: string) => void;
+     displayKey?: string;
+     textInputProps?: TextInputProps;
+diff --git a/node_modules/react-native-multiple-select/lib/react-native-multi-select.js b/node_modules/react-native-multiple-select/lib/react-native-multi-select.js
+index 2d97965..36478cd 100644
+--- a/node_modules/react-native-multiple-select/lib/react-native-multi-select.js
++++ b/node_modules/react-native-multiple-select/lib/react-native-multi-select.js
+@@ -76,6 +76,7 @@ export default class MultiSelect extends Component {
+     hideTags: PropTypes.bool,
+     canAddItems: PropTypes.bool,
+     onAddItem: PropTypes.func,
++    onSubmit: PropTypes.func,
+     onChangeInput: PropTypes.func,
+     displayKey: PropTypes.string,
+     textInputProps: PropTypes.object,
+@@ -118,6 +119,7 @@ export default class MultiSelect extends Component {
+     displayKey: 'name',
+     canAddItems: false,
+     onAddItem: () => {},
++    onSubmit: () => {},
+     onClearSelector: () => {},
+     onToggleList: () => {},
+     removeSelected: false,
+@@ -284,9 +286,13 @@ export default class MultiSelect extends Component {
+   };
+ 
+   _submitSelection = () => {
++    const {
++      onSubmit
++    } = this.props;
+     this._toggleSelector();
+     // reset searchTerm
+     this._clearSearchTerm();
++    onSubmit();
+   };
+ 
+   _itemSelected = item => {

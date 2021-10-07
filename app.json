@@ -2,7 +2,7 @@
   "expo": {
     "name": "ncis",
     "slug": "ncis",
-    "version": "1.0.0",
+    "version": "0.0.1",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
     "scheme": "myapp",
@@ -25,7 +25,10 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "xyz.mnch.ncis",
+      "permissions": [],
+      "versionCode": 1000000001
     },
     "web": {
       "favicon": "./assets/images/favicon.png"
